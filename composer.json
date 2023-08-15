@@ -1,12 +1,12 @@
 {
-    "name": "firesphere/graphql-jwt",
+    "name": "phwebs/silverstrip-graphql-jwt",
     "description": "JWT Authentication for GraphQL",
     "type": "silverstripe-vendormodule",
     "license": "bsd-3-clause",
     "require": {
         "php": ">=7.1",
         "silverstripe/framework": "^4.3",
-        "silverstripe/graphql": "^3.0",
+        "silverstripe/graphql": "^4.0",
         "lcobucci/jwt": "^3.2",
         "ext-json": "*"
     },
@@ -14,12 +14,6 @@
         "friendsofphp/php-cs-fixer": "^2.4",
         "phpunit/phpunit": "^5.7",
         "scriptfusion/phpunit-immediate-exception-printer": "^1"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "3.x-dev"
-        },
-        "installer-name": "graphql-jwt"
     },
     "config": {
         "process-timeout": 600
