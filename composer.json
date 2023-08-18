@@ -1,6 +1,7 @@
 {
     "name": "phwebs/silverstripe-graphql-jwt",
     "description": "JWT Authentication for GraphQL",
+    "type": "silverstripe-vendormodule",
     "license": "bsd-3-clause",
     "require": {
         "php": ">=7.4",
