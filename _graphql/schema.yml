@@ -1,0 +1,17 @@
+mutations:
+  createToken:
+    description: "Creates a JWT token for a valid user"
+    args:
+      Email: String!
+      Password: String!
+    resolver: ['hpa\graphql\Resolver\Mutation\MemberLogin', "resolve"]
+    model: SilverStripe\Security\Member
+
+types:
+  memberToken:
+    fields:
+      id: ID!
+      firstName: String
+      surname: String
+      email: String
+      username: String

@@ -1,0 +1,5 @@
+SilverStripe\GraphQL\Schema\Schema:
+  schemas:
+    default:
+      src:
+        - _graphql

@@ -1,27 +1,20 @@
 <?php declare(strict_types=1);
 
-namespace Firesphere\GraphQLJWT\Mutations;
+namespace Firesphere\GraphQLJWT\Resolver\Mutation;
 
-use Firesphere\GraphQLJWT\Extensions\MemberExtension;
+use Generator;
+use Firesphere\GraphQLJWT\Types\TokenStatusEnum;
 use Firesphere\GraphQLJWT\Helpers\MemberTokenGenerator;
 use Firesphere\GraphQLJWT\Helpers\RequiresAuthenticator;
-use Firesphere\GraphQLJWT\Types\TokenStatusEnum;
-use Generator;
 use GraphQL\Type\Definition\ResolveInfo;
-use GraphQL\Type\Definition\Type;
-use Psr\Container\NotFoundExceptionInterface;
-use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Extensible;
-use SilverStripe\GraphQL\MutationCreator;
-use SilverStripe\GraphQL\OperationResolver;
-use SilverStripe\ORM\ValidationException;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\Security\Authenticator;
 use SilverStripe\Security\Member;
 use SilverStripe\Security\Security;
 
-class CreateTokenMutationCreator extends MutationCreator implements OperationResolver
+class CreateToken
 {
     use RequiresAuthenticator;
     use MemberTokenGenerator;
@@ -50,27 +43,6 @@ class CreateTokenMutationCreator extends MutationCreator implements OperationRes
     {
         $this->customAuthenticators = $authenticators;
         return $this;
-    }
-
-    public function attributes(): array
-    {
-        return [
-            'name'        => 'createToken',
-            'description' => 'Creates a JWT token for a valid user'
-        ];
-    }
-
-    public function type(): Type
-    {
-        return $this->manager->getType('MemberToken');
-    }
-
-    public function args(): array
-    {
-        return [
-            'Email'    => ['type' => Type::nonNull(Type::string())],
-            'Password' => ['type' => Type::string()]
-        ];
     }
 
     /**
